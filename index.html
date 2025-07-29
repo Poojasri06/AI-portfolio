@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pooja | AI Engineer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+    canvas#cursorTrail {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      border-radius: 50%;
+      background: #a855f7;
+      animation: bounce 0.6s infinite alternate;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-15px); }
+       }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      section {
+        padding: 1rem;
+      }
+      .group-hover\:scale-105 {
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+</body>
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- AI Loader Animation -->
+  <div id="loader">
+    <div class="flex space-x-2">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Background Effects -->
+  <canvas id="cursorTrail"></canvas>
+  <div id="particles-js"></div>
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex flex-col items-center justify-center text-center p-8" data-aos="fade-in" data-aos-duration="1500">
+    <h1 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400 mb-4">Hi, I'm Pooja Sri</h1>
+    <p class="text-xl text-gray-300 mb-4">Aspiring AI Engineer | Robotics & ML Enthusiast</p>
+    
+
+    <!-- Audio Greeting -->
+    <audio id="introAudio" preload="auto">
+      <source src="./assets/pooja-intro.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="document.getElementById('introAudio').play()" class="mt-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded">🔊 Play Greeting</button>
+<div class="flex flex-col sm:flex-row gap-4 mt-6">
+
+</div>
+  </header>
+  <!--floating ai bot intro message-->
+  <div id="chatbotIntro" class="fixed bottom-28 right-6 bg-purple-700 text-white px-4 py-2 rounded-xl shadow-xl animate-bounce z-50 shadow-purple-500/40">
+    👋 Hi, I'm <strong>PoojaBot</strong> — your AI assistant! Ask me anything about my projects, skills, or resume.
+  </div>
+
+  <!-- Featured Projects -->
+  <section class="p-8 max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl text-center font-semibold text-purple-300 mb-10" data-aos="fade-up">🚀 Featured Projects</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Aura Derm -->
+      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
+        <img src="./assets/aura-derm.jpg" alt="Aura Derm" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Aura Derm</h3>
+          <p class="text-sm mt-2">AI skincare advisor that detects facial skin problems and gives personalized product and diet suggestions.</p>
+        </div>
+      </div>
+
+      <!-- Humanoid Robot -->
+      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
+        <img src="./assets/robot.jpg" alt="Humanoid Robot" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Mini Humanoid Robot</h3>
+          <p class="text-sm mt-2">Arduino-powered robot with IR/ultrasonic sensors and robotic arm using basic motor control logic.</p>
+        </div>
+      </div>
+
+      <!-- Titanic Prediction -->
+      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
+        <img src="./assets/titanic.jpg" alt="Titanic Prediction" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Titanic Survival Prediction</h3>
+          <p class="text-sm mt-2">ML model using logistic regression to predict survival rates based on passenger data.</p>
+        </div>
+      </div>
+
+      <!-- Stock App -->
+      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
+        <img src="./assets/stock-app.jpg" alt="Stock Suggestion App" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Stock Suggestion App</h3>
+          <p class="text-sm mt-2">App recommending stocks using ML-based time-series data with user login verification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+    <section class="p-8 max-w-3xl mx-auto" data-aos="fade-up">
+  <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-semibold mb-6 text-center text-purple-300">👩‍💻 About Me</h2>
+
+  <div class="bg-black/40 backdrop-blur-lg border border-purple-500/30 rounded-2xl p-6 text-white shadow-xl shadow-purple-500/10 transition hover:shadow-purple-500/30 hover:scale-[1.02]">
+    <p class="mb-4 text-gray-300 leading-relaxed">
+      I'm <span class="text-purple-400 font-semibold">Pooja Sri</span>, an aspiring AI Engineer passionate about Machine Learning, Deep Learning, and Robotics. I enjoy exploring how artificial intelligence can solve real-world challenges and improve lives.
+    </p>
+    <p class="mb-4 text-gray-300 leading-relaxed">
+      My work ranges from building AI-powered skincare solutions to creating Arduino-based humanoid robots. I'm continuously learning, improving my skills, and contributing to impactful, tech-driven projects.
+    </p>
+    <p class="text-gray-300 leading-relaxed">
+      I'm currently seeking opportunities where I can grow as an AI developer and collaborate with passionate minds to innovate and create a better future.
+    </p>
+  </div>
+</section>
+
+
+  <!-- Skills Section -->
+  <section class="p-8 max-w-4xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6">🧠 Skills & Tools</h2>
+    <div class="flex flex-wrap gap-3 justify-center text-sm text-gray-300">
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Python</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">TensorFlow</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">PyTorch</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Arduino</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">OpenCV</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Streamlit</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Scikit-learn</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Machine Learning</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Deep Learning</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Data Science</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Git & GitHub</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">NLP</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">AI Ethics</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Cybersecurity</span>
+      <span class="bg-gray-700 px-4 py-2 rounded-full">Prompt Engineering</span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+<section class="p-8 max-w-3xl mx-auto text-center" id="contact" data-aos="fade-up">
+  <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-semibold text-purple-300 mb-6">📨 Contact Me</h2>
+  <form action="https://formspree.io/f/your-form-id" method="POST" class="bg-gray-900 rounded-xl p-6 shadow-lg space-y-4">
+    <input type="text" name="name" placeholder="Your Name" required
+      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500" />
+    
+    <input type="email" name="email" placeholder="Your Email" required
+      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500" />
+
+    <textarea name="message" rows="5" placeholder="Your Message" required
+      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+
+    <button type="submit"
+      class="bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-full transition-all">Send Message</button>
+  </form>
+</section>
+ <!-- Footer -->
+  <footer class="bg-gray-950 p-6 text-center text-gray-400 text-sm">
+    <p>© 2025 Pooja Sri — AI Engineer Portfolio</p>
+    <p>Contact: <a href="mailto:poojasrikumar006@gmail.com" class="text-purple-400">poojasrikumar006@gmail.com</a> |
+      <a href="https://www.linkedin.com/in/pooja-sri-b25053286" class="text-purple-400">LinkedIn</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 50 },
+        size: { value: 3 },
+        color: { value: "#a855f7" },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: "#a855f7",
+          opacity: 0.4,
+          width: 1
+        },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" }
+        }
+      }
+    });
+  </script>
+
+  <script>
+    const canvas = document.getElementById("cursorTrail");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particles = [];
+
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = Math.random() * 4 + 1;
+        this.alpha = 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha -= 0.01;
+        this.radius = Math.max(0.1, this.radius - 0.02);
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+        if (p.alpha <= 0 || p.radius <= 0.1) particles.splice(i, 1);
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 3; i++) {
+        particles.push(new Particle(e.clientX, e.clientY));
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Hide loader on window load
+    window.addEventListener("load", () => {
+      document.getElementById("loader").style.display = "none";
+    });
+  </script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="JEVEr6-bom-hBGdtBHp90";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const chatbotIntro = document.getElementById("chatbotIntro");
+    if (chatbotIntro) {
+      let introTimer = setTimeout(() => {
+        chatbotIntro.style.opacity = '0';
+        setTimeout(() => {
+          if (chatbotIntro) chatbotIntro.style.display = 'none';
+        }, 500); // Match the transition duration
+      }, 5000); // Show for 5 seconds only
+
+      chatbotIntro.addEventListener("click", () => {
+        clearTimeout(introTimer);
+        chatbotIntro.style.opacity = '0';
+        setTimeout(() => {
+          if (chatbotIntro) chatbotIntro.style.display = 'none';
+        }, 500);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
