@@ -1,327 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pooja | AI Engineer Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pooja Sri | AI Student Portfolio</title>
+  <meta name="description" content="Portfolio of Pooja Sri — aspiring AI Engineer. Projects in ML, DL, CV, and Robotics. Contact and resume." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    #particles-js {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-    }
-    canvas#cursorTrail {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -2;
-      pointer-events: none;
-    }
-    #loader {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      margin: 5px;
-      border-radius: 50%;
-      background: #a855f7;
-      animation: bounce 0.6s infinite alternate;
-    }
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes bounce {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-15px); }
-       }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      section {
-        padding: 1rem;
-      }
-      .group-hover\:scale-105 {
-        transform: scale(1.02);
-      }
-    }
+    :root { --brand:#a855f7; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    /* Background particle canvas */
+    #particles-js { position: fixed; inset: 0; z-index: -1; }
+    /* Loader */
+    #loader { position: fixed; inset: 0; display: grid; place-items: center; background:#000; color:#fff; z-index: 50; }
+    .dot { width: 10px; height: 10px; margin: 6px; border-radius: 9999px; background: var(--brand); animation: bounce 0.6s infinite alternate; }
+    .dot:nth-child(2){ animation-delay: .2s; } .dot:nth-child(3){ animation-delay:.4s; }
+    @keyframes bounce { 0%{transform:translateY(0)} 100%{transform:translateY(-12px)} }
+    /* Skip link for accessibility */
+    .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { position: fixed; left: 1rem; top: 1rem; width:auto; height:auto; padding:.5rem .75rem; background:#111827; color:#fff; border:1px solid #4c1d95; border-radius:.5rem; z-index:60; }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
-</body>
-  </style>
-</head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white">
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- AI Loader Animation -->
-  <div id="loader">
-    <div class="flex space-x-2">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="flex items-center" role="status" aria-label="Loading">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>
   </div>
 
-  <!-- Background Effects -->
-  <canvas id="cursorTrail"></canvas>
-  <div id="particles-js"></div>
+  <!-- Background Particles (kept lightweight) -->
+  <div id="particles-js" aria-hidden="true"></div>
 
-  <!-- Hero Section -->
-  <header class="min-h-screen flex flex-col items-center justify-center text-center p-8" data-aos="fade-in" data-aos-duration="1500">
-    <h1 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400 mb-4">Hi, I'm Pooja Sri</h1>
-    <p class="text-xl text-gray-300 mb-4">Aspiring AI Engineer | Robotics & ML Enthusiast</p>
-    
-
-    <!-- Audio Greeting -->
-    <audio id="introAudio" preload="auto">
-      <source src="./assets/pooja-intro.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    <button onclick="document.getElementById('introAudio').play()" class="mt-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded">🔊 Play Greeting</button>
-<div class="flex flex-col sm:flex-row gap-4 mt-6">
-
-</div>
+  <!-- NAVBAR -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-black/70 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="font-extrabold tracking-tight text-xl text-purple-400">Pooja Sri</a>
+      <button id="menuBtn" class="sm:hidden p-2 rounded-lg border border-white/10" aria-label="Open Menu" aria-expanded="false">
+        <span class="sr-only">Toggle Menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="hidden sm:block" aria-label="Primary">
+        <ul class="flex items-center gap-6 text-sm text-gray-300">
+          <li><a class="hover:text-purple-400" href="#about">About</a></li>
+          <li><a class="hover:text-purple-400" href="#skills">Skills</a></li>
+          <li><a class="hover:text-purple-400" href="#projects">Projects</a></li>
+          <li><a class="hover:text-purple-400" href="#resume">Resume</a></li>
+          <li><a class="hover:text-purple-400" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <nav id="mobileMenu" class="sm:hidden hidden border-t border-white/10" aria-label="Mobile">
+      <ul class="px-4 py-3 space-y-2 text-gray-200">
+        <li><a class="block px-2 py-2 rounded hover:bg-white/5" href="#about">About</a></li>
+        <li><a class="block px-2 py-2 rounded hover:bg-white/5" href="#skills">Skills</a></li>
+        <li><a class="block px-2 py-2 rounded hover:bg-white/5" href="#projects">Projects</a></li>
+        <li><a class="block px-2 py-2 rounded hover:bg-white/5" href="#resume">Resume</a></li>
+        <li><a class="block px-2 py-2 rounded hover:bg-white/5" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
-  <!--floating ai bot intro message-->
-  <div id="chatbotIntro" class="fixed bottom-28 right-6 bg-purple-700 text-white px-4 py-2 rounded-xl shadow-xl animate-bounce z-50 shadow-purple-500/40">
-    👋 Hi, I'm <strong>PoojaBot</strong> — your AI assistant! Ask me anything about my projects, skills, or resume.
-  </div>
 
-  <!-- Featured Projects -->
-  <section class="p-8 max-w-6xl mx-auto">
-    <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl text-center font-semibold text-purple-300 mb-10" data-aos="fade-up">🚀 Featured Projects</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-
-      <!-- Aura Derm -->
-      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
-        <img src="./assets/aura-derm.jpg" alt="Aura Derm" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Aura Derm</h3>
-          <p class="text-sm mt-2">AI skincare advisor that detects facial skin problems and gives personalized product and diet suggestions.</p>
+  <main id="main" class="pt-16">
+    <!-- HERO -->
+    <section id="home" class="min-h-[80vh] grid place-items-center text-center px-6" data-aos="fade-up" data-aos-duration="900">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[.2em] text-gray-400">Aspiring AI Engineer</p>
+        <h1 class="mt-3 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-purple-300">Hi, I'm Pooja Sri</h1>
+        <p class="mt-4 text-gray-300">I build ML/DL projects, computer vision apps, and hobby robots. I love turning ideas into useful, user-friendly tools.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#projects" class="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 inline-flex items-center justify-center">View Projects</a>
+          <a href="#contact" class="px-6 py-3 rounded-xl border border-purple-600 hover:bg-purple-700/20 inline-flex items-center justify-center">Contact Me</a>
+        </div>
+        <!-- Optional audio greeting (kept, but unobtrusive) -->
+        <div class="mt-5">
+          <audio id="introAudio" preload="none">
+            <source src="assets/pooja-intro.mp3" type="audio/mpeg">
+          </audio>
+          <button type="button" class="text-sm text-gray-300 hover:text-white underline" onclick="document.getElementById('introAudio').play()">Play short greeting 🔊</button>
         </div>
       </div>
+    </section>
 
-      <!-- Humanoid Robot -->
-      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
-        <img src="./assets/robot.jpg" alt="Humanoid Robot" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Mini Humanoid Robot</h3>
-          <p class="text-sm mt-2">Arduino-powered robot with IR/ultrasonic sensors and robotic arm using basic motor control logic.</p>
+    <!-- ABOUT -->
+    <section id="about" class="py-16 px-6" data-aos="fade-up">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+        <div class="md:col-span-1">
+          <img src="assets/profile.jpg" alt="Portrait of Pooja Sri" class="w-48 h-48 object-cover rounded-2xl ring-1 ring-white/10 mx-auto md:mx-0" />
+        </div>
+        <div class="md:col-span-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-purple-300">About Me</h2>
+          <p class="mt-4 text-gray-300 leading-relaxed">I'm <span class="text-purple-400 font-semibold">Pooja Sri</span>, an AI & ML student exploring Machine Learning, Deep Learning, Computer Vision, and Robotics. My projects range from an AI skincare advisor to an Arduino-based humanoid robot. I enjoy building end‑to‑end solutions that are practical and easy to use.</p>
+          <p class="mt-3 text-gray-300">I'm seeking opportunities to grow as an AI Engineer and collaborate on impactful products.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="#resume" class="px-5 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10">Quick Resume</a>
+            <a href="https://www.linkedin.com/in/pooja-sri-b25053286" target="_blank" rel="noreferrer" class="px-5 py-2 rounded-lg bg-purple-600 hover:bg-purple-700">LinkedIn</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Titanic Prediction -->
-      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
-        <img src="./assets/titanic.jpg" alt="Titanic Prediction" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Titanic Survival Prediction</h3>
-          <p class="text-sm mt-2">ML model using logistic regression to predict survival rates based on passenger data.</p>
+    <!-- SKILLS -->
+    <section id="skills" class="py-16 px-6 bg-white/5" data-aos="fade-up">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-purple-300">Skills & Tools</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-purple-400">AI & ML</h3>
+            <ul class="mt-3 text-gray-300 space-y-1 list-disc list-inside">
+              <li>Python, NumPy, Pandas</li>
+              <li>PyTorch, TensorFlow, scikit-learn</li>
+              <li>Computer Vision (OpenCV)</li>
+              <li>NLP basics</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-purple-400">Dev & Tools</h3>
+            <ul class="mt-3 text-gray-300 space-y-1 list-disc list-inside">
+              <li>Git & GitHub, Streamlit, Flask</li>
+              <li>SQL, Model Deployment basics</li>
+              <li>Arduino, Sensors & Motor Control</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-purple-400">Soft Skills</h3>
+            <ul class="mt-3 text-gray-300 space-y-1 list-disc list-inside">
+              <li>Creative Thinking & Problem Solving</li>
+              <li>Communication & Team Work</li>
+              <li>Attention to Detail</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Stock App -->
-      <div class="relative group rounded-xl overflow-hidden shadow-lg bg-gray-900" data-aos="zoom-in-up">
-        <img src="./assets/stock-app.jpg" alt="Stock Suggestion App" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-bold text-purple-400">Stock Suggestion App</h3>
-          <p class="text-sm mt-2">App recommending stocks using ML-based time-series data with user login verification.</p>
+    <!-- PROJECTS -->
+    <section id="projects" class="py-16 px-6" data-aos="fade-up">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-purple-300">Featured Projects</h2>
+          <p class="text-sm text-gray-400">Each card has repo and (if available) live demo.</p>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Aura Derm -->
+          <article class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div class="h-40 bg-cover bg-center" style="background-image:url('assets/aura-derm.jpg')" aria-label="Aura Derm cover image"></div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white">Aura Derm — AI Skincare Advisor</h3>
+              <p class="mt-2 text-sm text-gray-300">Detects facial skin concerns and recommends products and diet. CV + Recommender.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-400">
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">PyTorch</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">OpenCV</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">Streamlit</span>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-sm" href="https://github.com/Poojasri06/AuraDerm" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm border border-white/10" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Humanoid Robot -->
+          <article class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div class="h-40 bg-cover bg-center" style="background-image:url('assets/robot.jpg')" aria-label="Humanoid Robot cover image"></div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white">Mini Humanoid Robot</h3>
+              <p class="mt-2 text-sm text-gray-300">Arduino robot with IR/Ultrasonic sensors and robotic arm control.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-400">
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">Arduino</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">C/C++</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">Sensors</span>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-sm" href="https://github.com/Poojasri06" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm border border-white/10" href="#" target="_blank" rel="noreferrer">Demo Video</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Deepfake Detection -->
+          <article class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div class="h-40 bg-cover bg-center" style="background-image:url('assets/deepfake.png')" aria-label="Deepfake detection cover image"></div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white">Deepfake Video Detection</h3>
+              <p class="mt-2 text-sm text-gray-300">Classifies face‑swap videos as real/fake and shows confidence score.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-400">
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">CNN/LSTM</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">PyTorch</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">OpenCV</span>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-sm" href="https://github.com/Poojasri06" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm border border-white/10" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Titanic -->
+          <article class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div class="h-40 bg-cover bg-center" style="background-image:url('assets/titanic.jpg')" aria-label="Titanic prediction cover image"></div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white">Titanic Survival Prediction</h3>
+              <p class="mt-2 text-sm text-gray-300">Baseline ML classification using engineered passenger features.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-400">
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">scikit‑learn</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">LogReg</span>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-sm" href="https://github.com/Poojasri06" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm border border-white/10" href="#" target="_blank" rel="noreferrer">Notebook</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stock Suggestion App -->
+          <article class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div class="h-40 bg-cover bg-center" style="background-image:url('assets/stocks.jpg')" aria-label="Stock suggestion cover image"></div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-white">Stock Suggestion App</h3>
+              <p class="mt-2 text-sm text-gray-300">Simple auth + time‑series heuristics to suggest stocks (for learning only).</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-400">
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">Streamlit</span>
+                <span class="px-2 py-1 rounded bg-black/40 border border-white/10">Pandas</span>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-sm" href="https://github.com/Poojasri06" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm border border-white/10" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
+
+    <!-- RESUME (quick snapshot + PDF link) -->
+    <section id="resume" class="py-16 px-6 bg-white/5" data-aos="fade-up">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-purple-300">Resume</h2>
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-white">Education</h3>
+            <p class="mt-2 text-gray-300">B.E. / B.Tech in AI & ML (Student)</p>
+            <p class="text-gray-400 text-sm">Relevant: Deep Learning, CV, NLP, Data Structures</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-white">Highlights</h3>
+            <ul class="mt-2 text-gray-300 space-y-1 list-disc list-inside">
+              <li>Aura Derm — CV + Recommender</li>
+              <li>Mini Humanoid Robot — Arduino</li>
+              <li>Deepfake Detection — CNN/LSTM</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-black/40 border border-white/10">
+            <h3 class="font-semibold text-white">Download</h3>
+            <p class="text-gray-300 mt-2">Grab the PDF version of my resume.</p>
+            <a class="mt-3 inline-flex px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700" href="assets/PoojaSri_Resume.pdf" download>Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-16 px-6" data-aos="fade-up">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-purple-300">Contact Me</h2>
+        <p class="mt-2 text-gray-400">Email: <a class="text-purple-400 underline" href="mailto:poojasrikumar006@gmail.com">poojasrikumar006@gmail.com</a></p>
+        <form class="mt-8 bg-white/5 p-6 rounded-2xl border border-white/10 text-left" action="https://formspree.io/f/your-form-id" method="POST">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300">Your Name</label>
+              <input class="mt-1 w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600" type="text" name="name" required>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300">Your Email</label>
+              <input class="mt-1 w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-purple-600" type="email" name="email" required>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label class="block text-sm text-gray-300">Message</label>
+            <textarea class="mt-1 w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 min-h-[120px] outline-none focus:ring-2 focus:ring-purple-600" name="message" required></textarea>
+          </div>
+          <button type="submit" class="mt-5 inline-flex px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-700">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-8 text-center text-gray-400 text-sm">
+      <p>© <span id="year"></span> Pooja Sri — AI Portfolio</p>
+      <p class="mt-1">LinkedIn: <a class="text-purple-400 underline" href="https://www.linkedin.com/in/pooja-sri-b25053286" target="_blank" rel="noreferrer">pooja-sri-b25053286</a> · GitHub: <a class="text-purple-400 underline" href="https://github.com/Poojasri06" target="_blank" rel="noreferrer">Poojasri06</a></p>
     </div>
-  </section>
-
-
-
-    <section class="p-8 max-w-3xl mx-auto" data-aos="fade-up">
-  <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-semibold mb-6 text-center text-purple-300">👩‍💻 About Me</h2>
-
-  <div class="bg-black/40 backdrop-blur-lg border border-purple-500/30 rounded-2xl p-6 text-white shadow-xl shadow-purple-500/10 transition hover:shadow-purple-500/30 hover:scale-[1.02]">
-    <p class="mb-4 text-gray-300 leading-relaxed">
-      I'm <span class="text-purple-400 font-semibold">Pooja Sri</span>, an aspiring AI Engineer passionate about Machine Learning, Deep Learning, and Robotics. I enjoy exploring how artificial intelligence can solve real-world challenges and improve lives.
-    </p>
-    <p class="mb-4 text-gray-300 leading-relaxed">
-      My work ranges from building AI-powered skincare solutions to creating Arduino-based humanoid robots. I'm continuously learning, improving my skills, and contributing to impactful, tech-driven projects.
-    </p>
-    <p class="text-gray-300 leading-relaxed">
-      I'm currently seeking opportunities where I can grow as an AI developer and collaborate with passionate minds to innovate and create a better future.
-    </p>
-  </div>
-</section>
-
-
-  <!-- Skills Section -->
-  <section class="p-8 max-w-4xl mx-auto text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold mb-6">🧠 Skills & Tools</h2>
-    <div class="flex flex-wrap gap-3 justify-center text-sm text-gray-300">
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Python</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">TensorFlow</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">PyTorch</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Arduino</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">OpenCV</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Streamlit</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Scikit-learn</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Machine Learning</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Deep Learning</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Data Science</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Git & GitHub</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">NLP</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">AI Ethics</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Cybersecurity</span>
-      <span class="bg-gray-700 px-4 py-2 rounded-full">Prompt Engineering</span>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-<section class="p-8 max-w-3xl mx-auto text-center" id="contact" data-aos="fade-up">
-  <h2 class="text-3xl sm:text-4xl md:text-5xll lg:text-6xl font-semibold text-purple-300 mb-6">📨 Contact Me</h2>
-  <form action="https://formspree.io/f/your-form-id" method="POST" class="bg-gray-900 rounded-xl p-6 shadow-lg space-y-4">
-    <input type="text" name="name" placeholder="Your Name" required
-      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500" />
-    
-    <input type="email" name="email" placeholder="Your Email" required
-      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500" />
-
-    <textarea name="message" rows="5" placeholder="Your Message" required
-      class="w-full bg-black border border-purple-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
-
-    <button type="submit"
-      class="bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-full transition-all">Send Message</button>
-  </form>
-</section>
- <!-- Footer -->
-  <footer class="bg-gray-950 p-6 text-center text-gray-400 text-sm">
-    <p>© 2025 Pooja Sri — AI Engineer Portfolio</p>
-    <p>Contact: <a href="mailto:poojasrikumar006@gmail.com" class="text-purple-400">poojasrikumar006@gmail.com</a> |
-      <a href="https://www.linkedin.com/in/pooja-sri-b25053286" class="text-purple-400">LinkedIn</a></p>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script> AOS.init({ once: true }); </script>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
-      particles: {
-        number: { value: 50 },
-        size: { value: 3 },
-        color: { value: "#a855f7" },
-        line_linked: {
-          enable: true,
-          distance: 120,
-          color: "#a855f7",
-          opacity: 0.4,
-          width: 1
-        },
-        move: { enable: true, speed: 1 }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" }
-        }
-      }
+      particles:{ number:{value:45}, color:{value:"#a855f7"}, shape:{type:"circle"}, opacity:{value:.35}, size:{value:2.5}, line_linked:{enable:true, distance:130, color:"#a855f7", opacity:.25, width:1}, move:{enable:true, speed:1.2} },
+      interactivity:{ events:{ onhover:{enable:true, mode:"grab"}, onclick:{enable:false} }, modes:{ grab:{distance:140, line_linked:{opacity:.35}} } }, retina_detect:true
     });
   </script>
 
   <script>
-    const canvas = document.getElementById("cursorTrail");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
+    // Loader: hide shortly after window load (prevents flash during deploy)
+    window.addEventListener('load',()=>{ setTimeout(()=>{ const l=document.getElementById('loader'); if(l) l.style.display='none'; }, 500); });
 
-    class Particle {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.radius = Math.random() * 4 + 1;
-        this.alpha = 1;
-        this.speedX = Math.random() * 2 - 1;
-        this.speedY = Math.random() * 2 - 1;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.alpha -= 0.01;
-        this.radius = Math.max(0.1, this.radius - 0.02);
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
-        ctx.fill();
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.update();
-        p.draw();
-        if (p.alpha <= 0 || p.radius <= 0.1) particles.splice(i, 1);
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn && mobileMenu){
+      menuBtn.addEventListener('click',()=>{
+        const open = mobileMenu.classList.toggle('hidden');
+        const expanded = !open; // after toggle, hidden? true means closed
+        menuBtn.setAttribute('aria-expanded', expanded.toString());
       });
-      requestAnimationFrame(animate);
     }
 
-    animate();
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
-    window.addEventListener("mousemove", (e) => {
-      for (let i = 0; i < 3; i++) {
-        particles.push(new Particle(e.clientX, e.clientY));
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    // Hide loader on window load
-    window.addEventListener("load", () => {
-      document.getElementById("loader").style.display = "none";
+  <!-- Optional: Chatbase embed (kept minimal and deferred) -->
+  <script>
+    window.addEventListener('load', function(){
+      (function(){
+        if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+          window.chatbase=(...a)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(a)};
+          window.chatbase=new Proxy(window.chatbase,{get(t,p){if(p==="q"){return t.q}return(...args)=>t(p,...args)}})
+        }
+        const script=document.createElement('script');
+        script.src='https://www.chatbase.co/embed.min.js';
+        script.id='JEVEr6-bom-hBGdtBHp90';
+        script.defer=true; script.dataset.domain='www.chatbase.co';
+        document.body.appendChild(script);
+      })();
     });
   </script>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="JEVEr6-bom-hBGdtBHp90";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const chatbotIntro = document.getElementById("chatbotIntro");
-    if (chatbotIntro) {
-      let introTimer = setTimeout(() => {
-        chatbotIntro.style.opacity = '0';
-        setTimeout(() => {
-          if (chatbotIntro) chatbotIntro.style.display = 'none';
-        }, 500); // Match the transition duration
-      }, 5000); // Show for 5 seconds only
-
-      chatbotIntro.addEventListener("click", () => {
-        clearTimeout(introTimer);
-        chatbotIntro.style.opacity = '0';
-        setTimeout(() => {
-          if (chatbotIntro) chatbotIntro.style.display = 'none';
-        }, 500);
-      });
-    }
-  });
-</script>
-
 </body>
 </html>
